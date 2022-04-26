@@ -18,7 +18,7 @@ import sample.SampleSearch;
 
 
 public class AntSearchRcrs {
-	
+//test
 	/**
 	 * Map associant à chaque entités un set d'entités voisins 
 	 */
