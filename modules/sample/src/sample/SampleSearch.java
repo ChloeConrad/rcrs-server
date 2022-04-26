@@ -21,7 +21,7 @@ import rescuecore2.worldmodel.EntityID;
  */
 public final class SampleSearch {
 
-  private Map<EntityID, Set<EntityID>> graph;
+  protected Map<EntityID, Set<EntityID>> graph;
   private Set<EntityID>                buildingSet;
 
 
@@ -216,9 +216,10 @@ public final class SampleSearch {
     } while ( current != start );
     return path;
   }
+  
 
 
-  private boolean isGoal( EntityID e, Collection<EntityID> test ) {
+  protected boolean isGoal( EntityID e, Collection<EntityID> test ) {
     return test.contains( e );
   }
 }
