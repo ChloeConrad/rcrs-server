@@ -17,6 +17,7 @@ import rescuecore2.standard.entities.StandardEntity;
 import rescuecore2.standard.kernel.comms.ChannelCommunicationModel;
 import rescuecore2.standard.kernel.comms.StandardCommunicationModel;
 import rescuecore2.worldmodel.EntityID;
+import sample.*;
 
 
 /**
@@ -43,10 +44,20 @@ public abstract class AbstractSampleAgent<E extends StandardEntity>
   protected SampleSearch               search;
   
   /**
-   * The search algorithm for ants
+   * The search algorithm for civilians
    */
 
-  protected AntSearchRcrs antSearch;
+  protected AntSearchForCivilians antSearchCivilians;
+  
+  /**
+   * The search algorithm for buildings
+   */
+  
+  protected AntSearchForUnexploredBuildings antSearchBuildings;
+  
+  
+  protected AntSearchForBlockades antSearchBlockades;
+  
   /**
    * Whether to use AKSpeak messages or not.
    */
@@ -95,7 +106,10 @@ public abstract class AbstractSampleAgent<E extends StandardEntity>
       }
     }
     search = new SampleSearch( model );
-    antSearch = new AntSearchRcrs(model);
+    antSearchCivilians = new AntSearchForCivilians(model);
+    antSearchBuildings = new AntSearchForUnexploredBuildings(model);
+    antSearchBlockades = new AntSearchForBlockades(model);
+    
     neighbours = search.getGraph();
     useSpeak = config.getValue( Constants.COMMUNICATION_MODEL_KEY )
         .equals( SPEAK_COMMUNICATION_MODEL );
